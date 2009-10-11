@@ -1,0 +1,42 @@
+CodeBeautifier
+==============
+
+CodeBeautifier prevents your code from looking like a total mess
+when it comes out your Rails application.
+
+Actually, it's impossible to make sure the generated code is always
+nicely indented, so this plugin makes you and your code look smarter.
+
+Ain't that great? :)
+
+
+Basic architecture
+==================
+
+It comes out just like a regular Rack middleware in the Rails stack.
+Why there? Because we must be able to intercept the response itself, 
+after the processing of the controllers.
+
+
+Example
+=======
+
+It's very quick to setup and enjoy. In your config/environment.rb file, just put:
+[...]
+Rails::Initializer.run do |config|
+  [...]
+  config.middleware.use "CodeBeautifier" do
+    spaces        4
+    content_types ["text/html", "application/xml"]
+  end
+  [...]
+end
+[...]
+
+To Do List:
+===========
+* Implement the content type handling
+* A real test suite (even if the code written for this middleware is very short)
+
+
+Copyright (c) 2009 Franck Verrot, released under the MIT license
